@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class PointTest {
 
     @Test
-    public void distance() {
+    public void distanceEquals26p833() {
         Point a = new Point(10, -6);
         Point b = new Point(-14, 6);
         double rsl = a.distance(b);
@@ -15,7 +15,7 @@ public class PointTest {
     }
 
     @Test
-    public void distance1() {
+    public void distanceEquals7p81() {
         Point a = new Point(0, 0);
         Point b = new Point(5, 6);
         double rsl = a.distance(b);
@@ -23,7 +23,7 @@ public class PointTest {
     }
 
     @Test
-    public void distance3d() {
+    public void distance3dEquals14p318() {
         Point a = new Point(0, 0, 0);
         Point b = new Point(5, 6, 12);
         double rsl = a.distance3d(b);

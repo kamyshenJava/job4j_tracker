@@ -13,25 +13,34 @@ public class Library {
         books[2] = detective;
         books[3] = cleanCode;
 
-        for (int i = 0; i < books.length; i++) {
-            Book b = books[i];
-            System.out.println(b.getTitle() + " — " + b.getPages());
-        }
+        allBooks(books);
         System.out.println("Меняю местами 1 и 4 книги.");
-        Book temp = books[0];
-        books[0] = books[3];
-        books[3] = temp;
+        changeOrder(books, 0, 3);
         System.out.println("Книги после перестановки:");
+        allBooks(books);
+        System.out.println("Книги с названием: \"Clean code\"");
+        pickBook(books, "Clean code");
+    }
+
+    private static void allBooks(Book[] books) {
         for (int i = 0; i < books.length; i++) {
             Book b = books[i];
             System.out.println(b.getTitle() + " — " + b.getPages());
         }
-        System.out.println("Книги с названием: \"Clean code\"");
+    }
+
+    private static void pickBook(Book[] books, String title) {
         for (int i = 0; i < books.length; i++) {
             Book b = books[i];
-            if (b.getTitle().equals("Clean code")) {
+            if (b.getTitle().equals(title)) {
                 System.out.println(b.getTitle() + " — " + b.getPages());
             }
         }
+    }
+
+    private static void changeOrder(Book[] books, int first, int second) {
+        Book temp = books[first];
+        books[first] = books[second];
+        books[second] = temp;
     }
 }

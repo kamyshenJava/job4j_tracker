@@ -6,12 +6,10 @@ public class Max {
     }
 
     public double max(double first, double second, double third) {
-        double temp = max(first, second);
-        return temp > third ? temp : third;
+        return max(max(first, second), third);
     }
 
     public double max(double first, double second, double third, double fourth) {
-        double temp = max(first, second, third);
-        return temp > fourth ? temp : fourth;
+        return max(max(max(first, second), third), fourth);
     }
 }

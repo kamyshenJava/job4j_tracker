@@ -13,34 +13,25 @@ public class Library {
         books[2] = detective;
         books[3] = cleanCode;
 
-        allBooks(books);
-        System.out.println("Меняю местами 1 и 4 книги.");
-        changeOrder(books, 0, 3);
-        System.out.println("Книги после перестановки:");
-        allBooks(books);
-        System.out.println("Книги с названием: \"Clean code\"");
-        pickBook(books, "Clean code");
-    }
-
-    private static void allBooks(Book[] books) {
         for (int i = 0; i < books.length; i++) {
             Book b = books[i];
             System.out.println(b.getTitle() + " — " + b.getPages());
         }
-    }
-
-    private static void pickBook(Book[] books, String title) {
+        System.out.println("Меняю местами 1 и 4 книги.");
+        Book temp = books[0];
+        books[0] = books[3];
+        books[3] = temp;
+        System.out.println("Книги после перестановки:");
         for (int i = 0; i < books.length; i++) {
             Book b = books[i];
-            if (b.getTitle().equals(title)) {
+            System.out.println(b.getTitle() + " — " + b.getPages());
+        }
+        System.out.println("Книги с названием: \"Clean code\"");
+        for (int i = 0; i < books.length; i++) {
+            Book b = books[i];
+            if ("Clean code".equals(b.getTitle())) {
                 System.out.println(b.getTitle() + " — " + b.getPages());
             }
         }
-    }
-
-    private static void changeOrder(Book[] books, int first, int second) {
-        Book temp = books[first];
-        books[first] = books[second];
-        books[second] = temp;
     }
 }

@@ -4,10 +4,7 @@ public class Programmer extends Engineer {
 
     private double experience;
 
-    Programmer() {
-    }
-
-    Programmer(String name, String surname, String education, String birthday, boolean workFromHome,
+    public Programmer(String name, String surname, String education, String birthday, boolean workFromHome,
                double experience) {
         super(name, surname, education, birthday, workFromHome);
         this.experience = experience;

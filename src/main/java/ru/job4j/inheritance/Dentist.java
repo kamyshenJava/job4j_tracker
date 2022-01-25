@@ -4,10 +4,7 @@ public class Dentist extends Doctor {
 
     private boolean canDoCrowns;
 
-    Dentist() {
-    }
-
-    Dentist(String name, String surname, String education, String birthday, boolean workInHospital,
+    public Dentist(String name, String surname, String education, String birthday, boolean workInHospital,
             boolean canDoCrowns) {
         super(name, surname, education, birthday, workInHospital);
         this.canDoCrowns = canDoCrowns;

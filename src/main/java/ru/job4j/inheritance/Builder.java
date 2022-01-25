@@ -4,10 +4,7 @@ public class Builder extends Engineer {
 
     private String currentProject;
 
-    Builder() {
-    }
-
-    Builder(String name, String surname, String education, String birthday, boolean workFromHome,
+    public Builder(String name, String surname, String education, String birthday, boolean workFromHome,
                String currentProject) {
         super(name, surname, education, birthday, workFromHome);
         this.currentProject = currentProject;

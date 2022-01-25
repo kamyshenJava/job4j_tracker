@@ -4,10 +4,7 @@ public class Surgeon extends Doctor {
 
     private boolean neurosurgeon;
 
-    Surgeon() {
-    }
-
-    Surgeon(String name, String surname, String education, String birthday, boolean workInHospital,
+    public Surgeon(String name, String surname, String education, String birthday, boolean workInHospital,
             boolean neurosurgeon) {
         super(name, surname, education, birthday, workInHospital);
         this.neurosurgeon = neurosurgeon;

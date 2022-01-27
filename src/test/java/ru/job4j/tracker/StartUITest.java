@@ -24,10 +24,10 @@ public class StartUITest {
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
-        String ItemId = String.valueOf(item.getId());
+        String itemId = String.valueOf(item.getId());
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"0", ItemId, replacedName, "1"}
+                new String[] {"0", itemId, replacedName, "1"}
         );
         UserAction[] actions = {
                 new EditAction(),
@@ -41,9 +41,9 @@ public class StartUITest {
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
-        String ItemId = String.valueOf(item.getId());
+        String itemId = String.valueOf(item.getId());
         Input in = new StubInput(
-                new String[] {"0", ItemId, "1"}
+                new String[] {"0", itemId, "1"}
         );
         UserAction[] actions = {
                 new DeleteAction(),

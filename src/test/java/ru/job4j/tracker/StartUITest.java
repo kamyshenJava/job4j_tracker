@@ -184,4 +184,46 @@ public class StartUITest {
                         + "1. Exit Program" + ln
         ));
     }
+
+    @Test
+    public void whenCreateItem() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"0", "Item name", "1"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new CreateAction(out),
+                new ExitAction()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+    }
+
+    @Test
+    public void whenDeleteItemOutputIsSuccessful() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("Deleted item"));
+        String itemId = String.valueOf(item.getId());
+        Input in = new StubInput(
+                new String[] {"0", itemId, "1"}
+        );
+        UserAction[] actions = {
+                new DeleteAction(out),
+                new ExitAction()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString(), is(
+                "Menu:" + ln
+                        + "0. Delete item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Delete item ===" + ln
+                        + "Заявка удалена успешно." + ln
+                        + "Menu:" + ln
+                        + "0. Delete item" + ln
+                        + "1. Exit Program" + ln
+        ));
+    }
 }

@@ -1,6 +1,7 @@
-package ru.job4j.tracker.ex;
+package ru.job4j.ex;
 
 import org.junit.Test;
+import ru.job4j.ex.Fact;
 
 public class FactTest {
 

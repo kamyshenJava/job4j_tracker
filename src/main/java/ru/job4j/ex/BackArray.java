@@ -1,4 +1,4 @@
-package ru.job4j.tracker.ex;
+package ru.job4j.ex;
 
 import java.util.Arrays;
 

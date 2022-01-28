@@ -1,10 +1,6 @@
 package ru.job4j.tracker.ex;
 
 public class Fact {
-    public static void main(String[] args) {
-        new Fact().calc(-1);
-
-    }
 
     public int calc(int n) {
         if (n < 0) {

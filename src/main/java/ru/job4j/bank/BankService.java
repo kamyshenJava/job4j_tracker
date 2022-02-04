@@ -43,9 +43,9 @@ public class BankService {
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         Account srcAcc = findByRequisite(srcPassport, srcRequisite);
-        boolean rsl = srcAcc.getBalance() >= amount;
+        Account destAcc = findByRequisite(destPassport, destRequisite);
+        boolean rsl = srcAcc != null && destAcc != null && srcAcc.getBalance() >= amount;
         if (rsl) {
-            Account destAcc = findByRequisite(destPassport, destRequisite);
             srcAcc.setBalance(srcAcc.getBalance() - amount);
             destAcc.setBalance(destAcc.getBalance() + amount);
         }

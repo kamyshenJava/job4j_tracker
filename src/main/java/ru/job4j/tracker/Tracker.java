@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Tracker {
-    private List<Item> items = new ArrayList<>(100);
+    private List<Item> items = new ArrayList<>();
     private int ids = 1;
 
     public Item add(Item item) {
@@ -30,7 +30,7 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return items;
+        return items == null ? null : List.copyOf(items);
     }
 
     private int indexOf(int id) {
@@ -49,8 +49,7 @@ public class Tracker {
         boolean rsl = index != -1;
         if (rsl) {
             item.setId(id);
-            items.remove(index);
-            items.add(index, item);
+            items.set(index, item);
         }
         return rsl;
     }

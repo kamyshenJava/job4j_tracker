@@ -26,8 +26,8 @@ public class College {
         Optional<Subject> rsl = Optional.empty();
         var s = findByAccount(account);
         if (s.isPresent()) {
-            var subjects = Optional.of(students.get(s.get()));
-            for (var subj : subjects.get()) {
+            Set<Subject> subjects = students.get(s.get());
+            for (var subj : subjects) {
                 if (name.equals(subj.getName())) {
                     rsl = Optional.of(subj);
                     break;

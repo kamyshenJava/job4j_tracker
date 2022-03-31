@@ -96,11 +96,7 @@ public class SqlTracker implements Store, AutoCloseable {
         try (Statement statement = cn.createStatement()) {
              try (ResultSet result = statement.executeQuery(sql)) {
                  while (result.next()) {
-                     items.add(new ItemFromDB(
-                             result.getInt("id"),
-                             result.getString("name"),
-                             result.getTimestamp("created")
-                     ));
+                     items.add(getItemFromResult(result));
                  }
              }
         } catch (Exception e) {
@@ -117,11 +113,7 @@ public class SqlTracker implements Store, AutoCloseable {
             preparedStatement.setString(1, key);
             try (ResultSet result = preparedStatement.executeQuery()) {
                 while (result.next()) {
-                    items.add(new ItemFromDB(
-                            result.getInt("id"),
-                            result.getString("name"),
-                            result.getTimestamp("created")
-                    ));
+                    items.add(getItemFromResult(result));
                 }
             }
         } catch (Exception e) {
@@ -138,11 +130,7 @@ public class SqlTracker implements Store, AutoCloseable {
             preparedStatement.setInt(1, id);
             try (ResultSet result = preparedStatement.executeQuery()) {
                 if (result.next()) {
-                    rsl = new ItemFromDB(
-                        result.getInt("id"),
-                        result.getString("name"),
-                        result.getTimestamp("created")
-                    );
+                    rsl = getItemFromResult(result);
                 }
             }
         } catch (Exception e) {
@@ -151,22 +139,11 @@ public class SqlTracker implements Store, AutoCloseable {
         return rsl;
     }
 
-    private static class ItemFromDB extends Item {
-        private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        private LocalDateTime created;
-
-        ItemFromDB(int id, String name, Timestamp date) {
-            super(id, name);
-            this.created = date.toLocalDateTime();
-        }
-
-        @Override
-        public String toString() {
-            return "Item{"
-                    + "id=" + this.getId()
-                    + ", name='" + this.getName() + '\''
-                    + ", created=" + created.format(FORMATTER)
-                    + '}';
-        }
+    private Item getItemFromResult(ResultSet result) throws Exception {
+        return new Item(
+                result.getInt("id"),
+                result.getString("name"),
+                result.getTimestamp("created").toLocalDateTime()
+        );
     }
 }

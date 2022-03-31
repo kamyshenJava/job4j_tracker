@@ -15,7 +15,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = List.of(new ExitAction());
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
@@ -27,7 +27,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItemTestOutputIsSuccessful() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
@@ -52,7 +52,7 @@ public class StartUITest {
     @Test
     public void whenShowAllTestOutputIsSuccessful() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
                 new String[] {"0", "1"}
@@ -76,7 +76,7 @@ public class StartUITest {
     @Test
     public void whenFindByExistingNameTestOutputIsSuccessful() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String name = one.getName();
         Input in = new StubInput(
@@ -101,7 +101,7 @@ public class StartUITest {
     @Test
     public void whenFindByNonExistingNameTestOutputIsSuccessful() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         tracker.add(new Item("test1"));
         String nonExistingName = "just something";
         Input in = new StubInput(
@@ -126,7 +126,7 @@ public class StartUITest {
     @Test
     public void whenFindByExistingIdTestOutputIsSuccessful() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String id = String.valueOf(one.getId());
         Input in = new StubInput(
@@ -152,7 +152,7 @@ public class StartUITest {
     @Test
     public void whenFindByNonExistingIdTestOutputIsSuccessful() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         tracker.add(new Item("test1"));
         String nonExistingId = "999";
         Input in = new StubInput(
@@ -182,7 +182,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = List.of(new CreateAction(out),
                 new ExitAction());
         new StartUI(out).init(in, tracker, actions);
@@ -192,7 +192,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItemOutputIsSuccessful() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Deleted item"));
         String itemId = String.valueOf(item.getId());
         Input in = new StubInput(
@@ -220,7 +220,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"7", "0"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = List.of(new ExitAction());
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();

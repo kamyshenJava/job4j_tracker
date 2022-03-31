@@ -3,14 +3,14 @@ package ru.job4j.tracker;
 import java.util.List;
 
 public final class SingleTracker {
-    private static Tracker tracker = null;
+    private static MemTracker tracker = null;
 
     private SingleTracker() {
     }
 
-    public static Tracker getInstance() {
+    public static MemTracker getInstance() {
         if (tracker == null) {
-            Tracker tracker = new Tracker();
+            MemTracker tracker = new MemTracker();
         }
         return tracker;
     }

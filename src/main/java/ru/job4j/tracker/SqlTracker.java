@@ -27,16 +27,8 @@ public class SqlTracker implements Store, AutoCloseable {
                     config.getProperty("username"),
                     config.getProperty("password")
             );
-            createTable();
         } catch (Exception e) {
             throw new IllegalStateException(e);
-        }
-    }
-
-    private void createTable() throws Exception {
-        String sql = "CREATE TABLE IF NOT EXISTS Items(id serial primary key, name text, created timestamp)";
-        try (Statement statement = cn.createStatement()) {
-            statement.execute(sql);
         }
     }
 

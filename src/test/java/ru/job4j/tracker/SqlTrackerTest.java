@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 public class SqlTrackerTest {
 
-    static Connection connection;
+    private static Connection connection;
 
     @BeforeClass
     public static void initConnection() {
@@ -82,8 +82,12 @@ public class SqlTrackerTest {
     public void whenSaveItemAndFindByNameThenMustBeTheSame() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
+        Item item2 = new Item("item");
+        Item item3 = new Item("item3");
         tracker.add(item);
-        List<Item> expected = List.of(item);
+        tracker.add(item2);
+        tracker.add(item3);
+        List<Item> expected = List.of(item, item2);
         assertEquals(tracker.findByName(item.getName()), expected);
     }
 
